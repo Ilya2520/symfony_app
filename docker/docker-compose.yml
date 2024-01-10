@@ -23,7 +23,7 @@ services:
         build:
             context: ./sql
         ports:
-            - ${POSTGRES_PORT}:5432
+            - ${POSTGRES_PORT}:5433
         environment:
             POSTGRES_DB: ${POSTGRES_DB}
             POSTGRES_USER: ${POSTGRES_USER}

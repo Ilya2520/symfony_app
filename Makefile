@@ -40,7 +40,7 @@ app_cache_clear:
 	docker-compose -f ./docker/docker-compose.yml exec -u www-data php bin/console cache:clear
 	docker-compose -f ./docker/docker-compose.yml exec -u www-data php bin/console cache:clear --env=test
 
-# Database
+# DatabaseÏ
 db_migrate:
 	${DOCKER_COMPOSE} exec -u www-data php-fpm bin/console doctrine:migrations:migrate --no-interaction
 migrate: db_migrate
