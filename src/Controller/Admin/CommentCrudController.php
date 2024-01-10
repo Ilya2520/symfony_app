@@ -14,6 +14,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 
 class CommentCrudController extends AbstractCrudController
 {
@@ -43,6 +44,10 @@ class CommentCrudController extends AbstractCrudController
                 yield EmailField::new('email');
                 yield TextareaField::new('text')
                         ->hideOnIndex()
+            ;
+        yield ImageField::new('photoFilename')
+                        ->setBasePath('/uploads/photos')
+                ->setLabel('Photo')
             ;
 
         $createdAt = DateTimeField::new('createdAt')->setFormTypeOptions([
