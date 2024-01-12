@@ -50,3 +50,12 @@ db_migration_down:
 
 db_drop:
 	docker-compose -f ./docker/docker-compose.yml exec -u www-data php-fpm bin/console doctrine:schema:drop --force
+
+
+tests:
+	php bin/console doctrine:database:drop --force --env=test || true
+	php bin/console doctrine:database:create --env=test
+	php bin/console doctrine:migrations:migrate -n --env=test
+	php bin/console doctrine:fixtures:load -n --env=test
+	php bin/phpunit $(MAKECMDGOALS)
+.PHONY: tests
